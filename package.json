@@ -1,14 +1,14 @@
 {
-  "name": "torrent-name-parser",
-  "version": "0.6.5",
+  "name": "parse-torrent-filename",
+  "version": "1.0.0",
   "description": "Parses torrent name of a movie or TV show.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/clems6ever/torrent-name-parser.git"
+    "url": "git://github.com/lacymorrow/torrent-name-parser.git"
   },
-  "homepage": "https://github.com/clems6ever/torrent-name-parser",
+  "homepage": "https://github.com/lacymorrow/torrent-name-parser",
   "bugs": {
-    "url": "https://github.com/clems6ever/torrent-name-parser/issues"
+    "url": "https://github.com/lacymorrow/torrent-name-parser/issues"
   },
   "keywords": [
     "torrent",
