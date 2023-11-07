@@ -41,7 +41,7 @@ core.on('common', function () {
     clean = clean.replace(/\./g, ' ');
   }
 
-  clean = clean.replace(/_/g, ' ');
+  clean = clean.replace(/[_-]/g, ' ');
   clean = clean.replace(/([\(_]|- )$/, '').trim();
 
   core.emit('part', {
