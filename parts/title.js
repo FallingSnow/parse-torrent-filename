@@ -34,7 +34,7 @@ core.on('common', function () {
   var clean = raw;
 
   // clean up title
-  clean = raw.replace(/^ -/, '');
+  clean = raw.replace(/^-/, ' ');
 
   if(clean.indexOf(' ') === -1 && clean.indexOf('.') !== -1) {
     clean = clean.replace(/\./g, ' ');

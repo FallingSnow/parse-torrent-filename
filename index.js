@@ -13,3 +13,5 @@ function ptn(name, customPatterns, customTypes) {
 ptn.configure = function(customPatterns, customTypes) {
   require('./core').configure(customPatterns, customTypes);
 };
+
+console.log(ptn('die-hard'))

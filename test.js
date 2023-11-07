@@ -4,6 +4,12 @@ var ptn = require('./');
 var tape = require('tape');
 
 var torrents = [
+	  {
+    name: 'die-hard',
+    title: 'Die Hard',
+    group: undefined,
+    excess: undefined
+  },
   {
     name: 'The Walking Dead S05E03 720p HDTV x264-ASAP[ettv]',
     title: 'The Walking Dead',
@@ -378,7 +384,10 @@ var torrents = [
     title: 'Le Labyrinthe',
     year: 2014,
     group: 'PopHD'
-  }
+  },
+	{
+		name: 'die-hard'
+	}
 ];
 
 torrents.forEach(function(torrent) {
@@ -394,7 +403,7 @@ torrents.forEach(function(torrent) {
           continue;
         }
 
-        testMessage = key + ': ' + JSON.stringify(torrent[key]);
+        testMessage = `${key}: ${JSON.stringify(parts[key])}, expected: ${JSON.stringify(torrent[key])}`
 
         test[Array.isArray(torrent[key]) ? 'deepEqual' : 'equal'](
           parts[key],
