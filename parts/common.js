@@ -14,7 +14,7 @@ var patterns = {
   quality: /hdtv|bluray|(?:b[dr]|dvd|hd|tv)rip|web-?(?:dl|rip)|dvd/i,
   codec: /dvix|mpeg[0-9]|divx|xvid|(?:x|h)[-\. ]?26(?:4|5)|avc|hevc/i,
   audio: /MP3|DD5\.?1|Dual[\- ]Audio|LiNE|DTS|AAC(?:\.?2\.0)?|AC3(?:\.5\.1)?/,
-  group: /(- ?([^-]+))$/,
+  group: /(- ([^-]+))$/,
   region: /R[0-9]/,
   extended: /EXTENDED/,
   hardcoded: /HC/,

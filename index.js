@@ -15,3 +15,4 @@ ptn.configure = function(customPatterns, customTypes) {
 };
 
 console.log(ptn('die-hard'))
+console.log(ptn('The Salvation French DVDRip XviD-UTT'))

@@ -18,7 +18,6 @@ core.on('part', function (part) {
     return;
   }
   else if(part.name === 'group') {
-		console.log(part.raw)
     groupRaw = part.raw;
   }
 

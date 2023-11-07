@@ -34,8 +34,9 @@ core.on('common', function () {
   var clean = raw;
 
   // clean up title
-  clean = raw.replace(/^-/, ' ');
+  clean = raw.replace(/^ -/, '');
 
+	// if no spaces but has dots, replace dots with spaces
   if(clean.indexOf(' ') === -1 && clean.indexOf('.') !== -1) {
     clean = clean.replace(/\./g, ' ');
   }
