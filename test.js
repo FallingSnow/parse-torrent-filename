@@ -384,6 +384,15 @@ var torrents = [
 		name: 'die-hard',
 		title: 'die hard'
 	},
+	{
+		name: 'Lyle.Lyle.Crocodile.2022.BDRip.x264.AAC.BGAUDiO-SiSO',
+		title: 'Lyle Lyle Crocodile',
+		year: 2022,
+		quality: 'BDRip',
+		codec: 'x264',
+		audio: 'AAC',
+		group: 'BGAUDiO-SiSO'
+	}
 ];
 
 torrents.forEach(function (torrent) {
