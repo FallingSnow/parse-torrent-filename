@@ -37,6 +37,15 @@ var currentPatterns;
 var currentTypes;
 var torrent;
 
+// Add this function at the beginning of the file
+function cleanTitle(title) {
+	console.log('cleanTitle', title);
+	return title.split(/[-._]/)
+		.map(word => word.trim())
+		.filter(Boolean)
+		.join(' ');
+}
+
 core.on('configure', function (config) {
 	for (var key in config.patterns) {
 		patterns[key] = config.patterns[key]; // override or create specified keys
@@ -83,6 +92,8 @@ core.on('start', function () {
 				}
 			}
 
+			console.log(key, clean);
+
 			if (key === 'group') {
 				if (clean.match(currentPatterns.codec) || clean.match(currentPatterns.quality)) {
 					continue;
@@ -95,6 +106,8 @@ core.on('start', function () {
 				// Check if this is the only information we have
 				if (Object.keys(core.getParts()).length === 0) {
 					key = 'title';
+					clean = cleanTitle(clean);
+					continue;
 				} else {
 					clean = clean.replace(/^-/, ""); // Remove leading hyphen
 					clean = clean.replace(/ *\([^)]*\) */, "");
@@ -102,6 +115,10 @@ core.on('start', function () {
 					clean = clean.trim(); // Trim any leading or trailing whitespace
 				}
 			}
+
+			// if (key === 'title' && clean.indexOf('-') !== -1) {
+			//     clean = clean.split('-').map(word => word.trim()).join(' ');
+			// }
 
 			if (key === 'language') {
 

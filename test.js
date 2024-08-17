@@ -4,10 +4,7 @@ var ptn = require('./');
 var tape = require('tape');
 
 var torrents = [
-	{
-		name: 'die-hard',
-		title: 'Die Hard'
-	},
+
 	{
 		name: 'The Walking Dead S05E03 720p HDTV x264-ASAP[ettv]',
 		title: 'The Walking Dead',
@@ -382,6 +379,10 @@ var torrents = [
 		title: 'Le Labyrinthe',
 		year: 2014,
 		group: 'PopHD'
+	},
+	{
+		name: 'die-hard',
+		title: 'Die Hard'
 	},
 ];
 

@@ -44,25 +44,23 @@ core.on('common', function () {
 	clean = clean.replace(/_/g, ' ');
 
 	// Remove any trailing hyphens or spaces, but keep hyphens between words
-	clean = clean.replace(/(?:[-\s]+(?=-|\s|$))|(?<=\s)-(?=\s)/g, '').trim();
+	clean = clean.replace(/[-\s]+$/, '').trim();
 
-	// Remove season and episode information if present
-	clean = clean.replace(/\s+-\s+\d+x\d+.*$/, '');
+	// Split the title by spaces and hyphens
+	var words = clean.split(/(?<=\S)(?=[-\s])|(?<=[-\s])(?=\S)/);
 
-	// Preserve hyphens in the middle of the title
-	clean = clean.replace(/(\w+)\s+-\s+(\w+)/g, '$1 - $2');
-
-	// Ensure the first letter of each word is capitalized, except for certain small words
+	// Capitalize each word, except for certain small words
 	const smallWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'if', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet'];
-	clean = clean.split(' ').map((word, index) => {
+	clean = words.map((word, index) => {
+		if (word.trim() === '' || word === '-') return word; // Preserve spaces and hyphens
 		if (index === 0 || !smallWords.includes(word.toLowerCase())) {
 			return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 		}
 		return word.toLowerCase();
-	}).join(' ');
+	}).join('');
 
-	// Handle hyphenated words separately to ensure proper capitalization
-	clean = clean.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
+	// Remove season and episode information if present
+	clean = clean.replace(/\s+-\s+\d+x\d+.*$/, '');
 
 	core.emit('part', {
 		name: 'title',
