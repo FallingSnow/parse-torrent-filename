@@ -7,46 +7,55 @@ require('./common');
 var torrent, start, end, raw;
 
 core.on('setup', function (data) {
-  torrent = data;
-  start = 0;
-  end = undefined;
-  raw = undefined;
+	torrent = data;
+	start = 0;
+	end = undefined;
+	raw = undefined;
 });
 
 core.on('part', function (part) {
-  if(!part.match) {
-    return;
-  }
+	if (!part.match) {
+		return;
+	}
 
-  if(part.match.index === 0) {
-    start = part.match[0].length;
+	if (part.match.index === 0) {
+		start = part.match[0].length;
 
-    return;
-  }
+		return;
+	}
 
-  if(!end || part.match.index < end) {
-    end = part.match.index;
-  }
+	if (!end || part.match.index < end) {
+		end = part.match.index;
+	}
 });
 
 core.on('common', function () {
-  var raw = end ? torrent.name.substr(start, end - start).split('(')[0] : torrent.name;
-  var clean = raw;
+	var raw = end ? torrent.name.substr(start, end - start).split('(')[0] : torrent.name;
+	var clean = raw;
 
-  // clean up title
-  clean = raw.replace(/^ -/, '');
+	// clean up title
+	clean = raw.replace(/^ -/, '');
 
 	// if no spaces but has dots, replace dots with spaces
-  if(clean.indexOf(' ') === -1 && clean.indexOf('.') !== -1) {
-    clean = clean.replace(/\./g, ' ');
-  }
+	if (clean.indexOf(' ') === -1 && clean.indexOf('.') !== -1) {
+		clean = clean.replace(/\./g, ' ');
+	}
 
-  clean = clean.replace(/[_-]/g, ' ');
-  clean = clean.replace(/([\(_]|- )$/, '').trim();
+	// Replace underscores with spaces, keep hyphens
+	clean = clean.replace(/_/g, ' ');
 
-  core.emit('part', {
-    name: 'title',
-    raw: raw,
-    clean: clean
-  });
+	// Remove any trailing hyphens or spaces, but keep hyphens between words
+	clean = clean.replace(/(?:[-\s]+(?=-|\s|$))|(?<=\s)-(?=\s)/g, '').trim();
+
+	// Remove season and episode information if present
+	clean = clean.replace(/\s+-\s+\d+x\d+.*$/, '');
+
+	// Preserve hyphens in the middle of the title
+	clean = clean.replace(/(\w+)\s+-\s+(\w+)/g, '$1 - $2');
+
+	core.emit('part', {
+		name: 'title',
+		raw: raw,
+		clean: clean
+	});
 });
