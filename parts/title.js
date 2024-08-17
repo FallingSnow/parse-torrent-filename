@@ -20,7 +20,6 @@ core.on('part', function (part) {
 
 	if (part.match.index === 0) {
 		start = part.match[0].length;
-
 		return;
 	}
 
@@ -52,6 +51,18 @@ core.on('common', function () {
 
 	// Preserve hyphens in the middle of the title
 	clean = clean.replace(/(\w+)\s+-\s+(\w+)/g, '$1 - $2');
+
+	// Ensure the first letter of each word is capitalized, except for certain small words
+	const smallWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'if', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet'];
+	clean = clean.split(' ').map((word, index) => {
+		if (index === 0 || !smallWords.includes(word.toLowerCase())) {
+			return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+		}
+		return word.toLowerCase();
+	}).join(' ');
+
+	// Handle hyphenated words separately to ensure proper capitalization
+	clean = clean.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
 
 	core.emit('part', {
 		name: 'title',

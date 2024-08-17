@@ -91,10 +91,16 @@ core.on('start', function () {
 				if (clean.match(/[^ ]+ [^ ]+ .+/)) {
 					key = 'episodeName';
 				}
-				clean = clean.replace(/^-/, ""); // Remove leading hyphen
-				clean = clean.replace(/ *\([^)]*\) */, "");
-				clean = clean.replace(/ *\[[^)]*\] */, "");
-				clean = clean.trim(); // Trim any leading or trailing whitespace
+
+				// Check if this is the only information we have
+				if (Object.keys(core.getParts()).length === 0) {
+					key = 'title';
+				} else {
+					clean = clean.replace(/^-/, ""); // Remove leading hyphen
+					clean = clean.replace(/ *\([^)]*\) */, "");
+					clean = clean.replace(/ *\[[^)]*\] */, "");
+					clean = clean.trim(); // Trim any leading or trailing whitespace
+				}
 			}
 
 			if (key === 'language') {
