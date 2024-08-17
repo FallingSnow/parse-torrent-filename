@@ -382,7 +382,7 @@ var torrents = [
 	},
 	{
 		name: 'die-hard',
-		title: 'Die Hard'
+		title: 'die hard'
 	},
 ];
 
