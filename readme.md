@@ -79,7 +79,7 @@ const result = ptn('Filename with custom pattern', {
 }, {
  additionalPattern: 'extraType'
 });
-
+```
 
 
 ### Handling Special Cases
