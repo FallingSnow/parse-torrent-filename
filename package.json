@@ -1,26 +1,26 @@
 {
-  "name": "parse-torrent-filename",
-  "version": "1.0.0",
-  "description": "Parses torrent name of a movie or TV show.",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/lacymorrow/torrent-name-parser.git"
-  },
-  "homepage": "https://github.com/lacymorrow/torrent-name-parser",
-  "bugs": {
-    "url": "https://github.com/lacymorrow/torrent-name-parser/issues"
-  },
-  "keywords": [
-    "torrent",
-    "parser",
-    "torrent name parser",
-    "parse torrent name"
-  ],
-  "devDependencies": {
-    "tape": "^5.7.2",
-    "tap-spec": "^5.0.0"
-  },
-  "scripts": {
-    "test": "tape test.js | tap-spec"
-  }
+	"name": "parse-torrent-filename",
+	"version": "1.0.2",
+	"description": "Parses torrent name of a movie or TV show.",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/lacymorrow/torrent-name-parser.git"
+	},
+	"homepage": "https://github.com/lacymorrow/torrent-name-parser",
+	"bugs": {
+		"url": "https://github.com/lacymorrow/torrent-name-parser/issues"
+	},
+	"keywords": [
+		"torrent",
+		"parser",
+		"torrent name parser",
+		"parse torrent name"
+	],
+	"devDependencies": {
+		"tape": "^5.7.2",
+		"tap-spec": "^5.0.0"
+	},
+	"scripts": {
+		"test": "tape test.js | tap-spec"
+	}
 }
