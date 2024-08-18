@@ -11,7 +11,7 @@ npm install parse-torrent-filename
 ## Usage
 
 ```javascript
-const parseTorrentFilename = require('parse-torrent-filename');
+import parseTorrentFilename from 'parse-torrent-filename';
 
 const parsed = parseTorrentFilename('The.Walking.Dead.S05E03.720p.HDTV.x264-ASAP[ettv]');
 console.log(parsed);
