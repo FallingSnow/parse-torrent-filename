@@ -39,7 +39,6 @@ var torrent;
 
 // Add this function at the beginning of the file
 function cleanTitle(title) {
-	console.log('cleanTitle', title);
 	return title.split(/[-._]/)
 		.map(word => word.trim())
 		.filter(Boolean)
@@ -91,8 +90,6 @@ core.on('start', function () {
 					clean = parseInt(clean.replace(/[^0-9.]/, ""), 10);
 				}
 			}
-
-			console.log(key, clean);
 
 			if (key === 'group') {
 				if (clean.match(currentPatterns.codec) || clean.match(currentPatterns.quality)) {
