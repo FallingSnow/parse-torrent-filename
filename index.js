@@ -1,15 +1,14 @@
 'use strict';
 
-require('./parts/common');
-require('./parts/title');
-require('./parts/excess');
+import core from "./core.js";
+import "./parts/common.js";
+import "./parts/title.js";
+import "./parts/excess.js";
 
-module.exports = ptn;
-
-function ptn(name, customPatterns, customTypes) {
-  return require('./core').exec(name, customPatterns, customTypes);
+export default function ptn(name, customPatterns, customTypes) {
+  return core.exec(name, customPatterns, customTypes);
 }
 
 ptn.configure = function(customPatterns, customTypes) {
-  require('./core').configure(customPatterns, customTypes);
+  core.configure(customPatterns, customTypes);
 };

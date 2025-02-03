@@ -1,8 +1,7 @@
 'use strict';
 
-var core = require('../core');
-
-require('./common');
+import core from "../core.js";
+import "./common.js";
 
 var torrent, start, end, raw;
 

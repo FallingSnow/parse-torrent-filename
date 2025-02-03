@@ -1,6 +1,6 @@
 'use strict';
 
-var EventEmitter = require('events').EventEmitter;
+import {EventEmitter} from "events";
 
 var Core = function() {
   EventEmitter.call(this);
@@ -37,4 +37,4 @@ Core.prototype.configure = function(customPatterns, customTypes) {
   this.emit('configure', {patterns: customPatterns, types: customTypes});
 };
 
-module.exports = new Core();
+export default new Core();

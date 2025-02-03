@@ -1,7 +1,7 @@
 'use strict';
 
-var ptn = require('./');
-var tape = require('tape');
+import ptn from "./index.js";
+import tape from "tape";
 
 var torrents = [
 

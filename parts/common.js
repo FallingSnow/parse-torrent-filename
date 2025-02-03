@@ -1,6 +1,6 @@
 'use strict';
 
-var core = require('../core');
+import core from "../core.js";
 
 /**
  * Pattern should contain either none or two capturing groups.

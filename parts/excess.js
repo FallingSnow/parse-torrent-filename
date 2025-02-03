@@ -1,6 +1,6 @@
 'use strict';
 
-var core = require('../core');
+import core from "../core.js";
 
 var torrent, raw, groupRaw;
 var escapeRegex = function(string) {

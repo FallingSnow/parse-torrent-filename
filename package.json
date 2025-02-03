@@ -2,6 +2,7 @@
 	"name": "parse-torrent-filename",
 	"version": "1.0.2",
 	"description": "Parses torrent name of a movie or TV show.",
+	"type": "module",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/lacymorrow/torrent-name-parser.git"
