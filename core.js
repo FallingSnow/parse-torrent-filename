@@ -1,6 +1,6 @@
 'use strict';
 
-import {EventEmitter} from "events";
+import {EventEmitter} from "node:events";
 
 var Core = function() {
   EventEmitter.call(this);
